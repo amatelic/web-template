@@ -1,0 +1,54 @@
+{
+  "name": "adventure",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tap \"test/**/*.test.js\"",
+    "start:server": "fastify start -l info app.js",
+    "dev:server": "fastify start -w -l info -P app.js",
+    "dev:frontend": "rollup -c rollup.config.js -w",
+    "dev:all": "npm run dev:server & npm run dev:frontend",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "keywords": [],
+  "author": "Anže Matelič <amtelic93@gmail.com> (https://gdo-studio.si)",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/preset-react": "^7.14.5",
+    "fastify": "^3.0.0",
+    "fastify-autoload": "^3.8.0",
+    "fastify-cli": "^2.13.0",
+    "fastify-cors": "^6.0.2",
+    "fastify-env": "^2.1.1",
+    "fastify-plugin": "^3.0.0",
+    "fastify-postgres": "^3.6.0",
+    "fastify-sensible": "^3.1.1",
+    "fluent-json-schema": "^3.0.1",
+    "pg": "^8.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "under-pressure": "^5.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-replace": "^3.0.0",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/react": "^6.3.7",
+    "babel-loader": "^8.2.2",
+    "rollup": "^2.56.2",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^1.1.0",
+    "tap": "^15.0.9"
+  }
+}
