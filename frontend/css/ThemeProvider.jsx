@@ -2,18 +2,20 @@ import React from 'react'
 import { ThemeProvider } from 'emotion-theming'
 import theme from '@rebass/preset'
 
-const theme1 = {
+const themeCustom = {
+  ...themeCustom,
   fontSizes: [
     12, 14, 16, 24, 32, 48, 64
   ],
   colors: {
-    background: 'black',
-    primary: 'tomato',
+    primary: '#07c',
+    gray: '#f6f6ff',
   },
   buttons: {
     primary: {
       color: 'white',
       bg: 'primary',
+      m: 2
     },
     outline: {
       color: 'primary',
@@ -23,8 +25,7 @@ const theme1 = {
   },
 }
 
-
 export default props =>
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={themeCustom}>
     {props.children}
   </ThemeProvider>

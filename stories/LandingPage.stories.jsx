@@ -4,7 +4,7 @@ import LandingPage from '../frontend/pages/landingpage.jsx'
 import CssGlobalStyle from './CssGlobalStyle.jsx';
 import ThemeProvider from '../frontend/css/ThemeProvider';
 
-export default {
+const page = {
   title: 'Page/Landing page',
   component: () => <ThemeProvider><LandingPage/></ThemeProvider>,
   argTypes: {
@@ -12,12 +12,14 @@ export default {
   },
 };
 
-const Template = (args) => <LandingPage {...args} />;
+export default page;
 
-export const Primary = Template.bind({});
-Primary.args = {
-//   primary: true,
-//   label: 'Button',
-};
+const Template = (args) => <ThemeProvider><LandingPage {...args}/></ThemeProvider>;
+export const LandingPage1 = Template.bind({})
+
+LandingPage1.args = {
+  primary: 'test',
+}
+
 
 
