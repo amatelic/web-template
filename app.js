@@ -9,6 +9,7 @@ import UnderPressure from 'under-pressure'
 import S from 'fluent-json-schema'
 import { join } from 'desm'
 import ps from 'fastify-postgres';
+import auth from 'fastify-jwt';
 
 export default async function (fastify, opts) {
   // Place here your custom code!
@@ -16,6 +17,7 @@ export default async function (fastify, opts) {
   fastify.register(Env, {
     schema: S.object()
       .prop('NODE_ENV', S.string().required())
+      .prop('JWT_SECRET', S.string().required())
       .valueOf()
   })
 
@@ -51,5 +53,10 @@ export default async function (fastify, opts) {
     dir: join(import.meta.url, 'routes'),
     dirNameRoutePrefix: false,
     options: Object.assign({}, opts)
+  })
+
+  // adding jwt authentication 
+  fastify.register(auth, {
+    secret: process.env.JWT_SECRET
   })
 }
