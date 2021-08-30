@@ -51,7 +51,9 @@ export default async function (fastify, opts) {
   // Then, we'll load all of our routes.
   fastify.register(AutoLoad, {
     dir: join(import.meta.url, 'routes'),
-    dirNameRoutePrefix: false,
+    // dirNameRoutePrefix: false,
+    autoHooks: true, 
+    cascadeHooks: true,
     options: Object.assign({}, opts)
   })
 
@@ -59,4 +61,9 @@ export default async function (fastify, opts) {
   fastify.register(auth, {
     secret: process.env.JWT_SECRET
   })
+
+  // used for setting on 404 page
+  // fastify.setNotFoundHandler((req, reply) => {
+  //   reply.send('404 error')
+  // })
 }
