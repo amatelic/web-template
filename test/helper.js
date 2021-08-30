@@ -3,9 +3,9 @@
 // This file contains code that we reuse
 // between our tests.
 
-const Fastify = require('fastify')
-const fp = require('fastify-plugin')
-const App = require('../app')
+import Fastify from'fastify'
+import fp from'fastify-plugin'
+import App from'../app.js'
 
 // Fill in this config with all the configurations
 // needed for testing the application
@@ -16,6 +16,9 @@ function config () {
 // automatically build and tear down our instance
 function build (t) {
   const app = Fastify()
+
+  process.env.NODE_ENV = 'testing';
+  process.env.JWT_SECRET="secret";
 
   // fastify-plugin ensures that all decorators
   // are exposed for testing purposes, this is
@@ -28,7 +31,7 @@ function build (t) {
   return app
 }
 
-module.exports = {
+export {
   config,
   build
 }

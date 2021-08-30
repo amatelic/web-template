@@ -3,25 +3,27 @@
 import { test } from 'tap'
 import { build } from '../helper.js'
 
-test('default root route', async (t) => {
+test('Authentication is failing', async (t) => {
   const app = build(t)
 
   const res = await app.inject({
-    url: '/'
+    url: '/auth'
   })
-  t.same(JSON.parse(res.payload), { root: true })
+
+  console.log('Response:', res.statusCode);
+  t.equal(res.statusCode, 401);
 })
 
 // inject callback style:
 //
-// test('default root route', (t) => {
+// test('example is loaded', (t) => {
 //   t.plan(2)
 //   const app = build(t)
 //
 //   app.inject({
-//     url: '/'
+//     url: '/example'
 //   }, (err, res) => {
 //     t.error(err)
-//     t.same(JSON.parse(res.payload), { root: true })
+//     t.equal(res.payload, 'this is an example')
 //   })
 // })
