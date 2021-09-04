@@ -1,0 +1,7 @@
+build
+coverage
+test
+storybook
+dist
+.vscode
+.husky
